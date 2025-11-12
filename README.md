@@ -23,6 +23,7 @@ Claude Code의 실행을 Arize 플랫폼으로 추적하고 모니터링하는 �
 - Claude Code CLI
 - Arize AX 무료 계정 ([app.arize.com](https://app.arize.com)에서 가입)
 - Alpha Vantage API 키 (무료)
+- Supabase 무료 계정 ([supabase.com](https://supabase.com)에서 가입)
 
 ### 설치
 
@@ -71,12 +72,21 @@ ARIZE_API_KEY=your_arize_api_key_here
 
 # Alpha Vantage API 키
 ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key_here
+
+# Supabase 설정
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_KEY=your_supabase_anon_key
 ```
 
 #### API 키 발급 방법:
 
 1. **Arize AX API 키**: [app.arize.com](https://app.arize.com)에 로그인한 후, **Settings > API Keys**에서 확인
 2. **Alpha Vantage API 키**: [Alpha Vantage](https://www.alphavantage.co/support/#api-key)에서 무료로 발급
+3. **Supabase 설정**:
+   - [supabase.com](https://supabase.com)에서 프로젝트 생성
+   - 프로젝트 대시보드의 **Settings > API**에서 다음 정보 확인:
+     - `Project URL` → `SUPABASE_URL`
+     - `anon/public key` → `SUPABASE_KEY`
 
 #### API 키 동작 확인
 
