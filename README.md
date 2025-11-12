@@ -78,6 +78,20 @@ ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key_here
 1. **Arize AX API 키**: [app.arize.com](https://app.arize.com)에 로그인한 후, **Settings > API Keys**에서 확인
 2. **Alpha Vantage API 키**: [Alpha Vantage](https://www.alphavantage.co/support/#api-key)에서 무료로 발급
 
+#### API 키 동작 확인
+
+Alpha Vantage API 키를 발급받은 후, 로컬에서 curl로 정상 작동하는지 확인합니다:
+
+```bash
+# 샘플 요청 (데모 키 사용)
+curl "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo"
+
+# 본인의 API 키로 테스트
+curl "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=YOUR_API_KEY"
+```
+
+정상적으로 작동하면 IBM 주식의 현재 시세 정보가 JSON 형식으로 반환됩니다.
+
 ## 💻 사용 방법
 
 ### 기본 사용
