@@ -24,6 +24,7 @@ Claude Code의 실행을 Arize 플랫폼으로 추적하고 모니터링하는 �
 - Arize AX 무료 계정 ([app.arize.com](https://app.arize.com)에서 가입)
 - Alpha Vantage API 키 (무료)
 - Supabase 무료 계정 ([supabase.com](https://supabase.com)에서 가입)
+- dev-agent-lens 저장소 (별도 경로에 clone)
 
 ### 설치
 
@@ -47,10 +48,13 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-#### 2. 프로젝트 설치
+#### 2. 필수 저장소 Clone
 
 ```bash
-# 저장소 클론
+# dev-agent-lens 저장소 clone (별도 경로)
+git clone https://github.com/Teraflop-Inc/dev-agent-lens.git
+
+# 본 프로젝트 저장소 클론
 git clone https://github.com/yourusername/tracing-claude-code-with-arize.git
 cd tracing-claude-code-with-arize
 
