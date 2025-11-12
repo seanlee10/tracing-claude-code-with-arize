@@ -19,10 +19,34 @@ Claude Code의 실행을 Arize 플랫폼으로 추적하고 모니터링하는 �
 ### 사전 요구사항
 
 - Python 3.8 이상
+- Docker (컨테이너 실행용)
 - Claude Code CLI
 - Arize AX 무료 계정 ([app.arize.com](https://app.arize.com)에서 가입)
+- Alpha Vantage API 키 (무료)
 
 ### 설치
+
+#### 1. Docker 설치
+
+**macOS 사용자:**
+```bash
+# Colima와 Docker 설치
+brew install colima
+brew install docker
+```
+
+**Windows 사용자:**
+- WSL2 활성화가 필요합니다
+- [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/) 설치
+
+**Linux 사용자:**
+```bash
+# Docker 설치
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+```
+
+#### 2. 프로젝트 설치
 
 ```bash
 # 저장소 클론
@@ -44,9 +68,15 @@ ANTHROPIC_API_KEY=your_api_key_here
 # Arize AX 설정
 ARIZE_SPACE_KEY=your_space_key_here
 ARIZE_API_KEY=your_arize_api_key_here
+
+# Alpha Vantage API 키
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_key_here
 ```
 
-Arize AX 키는 [app.arize.com](https://app.arize.com)에 로그인한 후, **Settings > API Keys**에서 확인할 수 있습니다.
+#### API 키 발급 방법:
+
+1. **Arize AX API 키**: [app.arize.com](https://app.arize.com)에 로그인한 후, **Settings > API Keys**에서 확인
+2. **Alpha Vantage API 키**: [Alpha Vantage](https://www.alphavantage.co/support/#api-key)에서 무료로 발급
 
 ## 💻 사용 방법
 
