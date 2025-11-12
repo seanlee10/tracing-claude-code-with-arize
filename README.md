@@ -4,14 +4,14 @@ Claude Code의 실행을 Arize 플랫폼으로 추적하고 모니터링하는 �
 
 ## 📖 개요
 
-이 프로젝트는 Anthropic의 Claude Code CLI 도구의 동작을 Arize Phoenix를 사용하여 추적하고 관찰할 수 있도록 합니다. Claude Code의 API 호출, 응답 시간, 토큰 사용량, 에러 등을 실시간으로 모니터링하고 분석할 수 있습니다.
+이 프로젝트는 Anthropic의 Claude Code CLI 도구의 동작을 Arize AX를 사용하여 추적하고 관찰할 수 있도록 합니다. Claude Code의 API 호출, 응답 시간, 토큰 사용량, 에러 등을 실시간으로 모니터링하고 분석할 수 있습니다.
 
 ## ✨ 주요 기능
 
 - **실시간 추적**: Claude Code의 모든 API 호출을 실시간으로 추적
 - **성능 모니터링**: 응답 시간, 토큰 사용량, 비용 분석
 - **에러 추적**: 실패한 요청과 에러 로그 수집
-- **시각화**: Arize Phoenix 대시보드를 통한 직관적인 데이터 시각화
+- **시각화**: Arize AX 대시보드를 통한 직관적인 데이터 시각화
 - **디버깅**: 상세한 트레이스 정보로 문제 진단 및 해결
 
 ## 🚀 시작하기
@@ -20,7 +20,7 @@ Claude Code의 실행을 Arize 플랫폼으로 추적하고 모니터링하는 �
 
 - Python 3.8 이상
 - Claude Code CLI
-- Arize Phoenix 계정 (선택사항)
+- Arize AX 무료 계정 ([app.arize.com](https://app.arize.com)에서 가입)
 
 ### 설치
 
@@ -41,10 +41,12 @@ pip install -r requirements.txt
 # Anthropic API 키
 ANTHROPIC_API_KEY=your_api_key_here
 
-# Arize Phoenix 설정 (선택사항)
-PHOENIX_COLLECTOR_ENDPOINT=your_endpoint_here
-PHOENIX_API_KEY=your_phoenix_api_key_here
+# Arize AX 설정
+ARIZE_SPACE_KEY=your_space_key_here
+ARIZE_API_KEY=your_arize_api_key_here
 ```
+
+Arize AX 키는 [app.arize.com](https://app.arize.com)에 로그인한 후, **Settings > API Keys**에서 확인할 수 있습니다.
 
 ## 💻 사용 방법
 
@@ -66,17 +68,20 @@ tracer.start()
 tracer.stop()
 ```
 
-### Arize Phoenix와 연동
+### Arize AX와 연동
 
 ```python
 from claude_tracer import ClaudeTracer
-from phoenix.trace import PhoenixTracer
+from arize.api import Client
 
-# Phoenix 트레이서 초기화
-phoenix_tracer = PhoenixTracer()
+# Arize AX 클라이언트 초기화
+arize_client = Client(
+    space_key='your_space_key_here',
+    api_key='your_arize_api_key_here'
+)
 
 # Claude 트레이서 초기화
-tracer = ClaudeTracer(backend=phoenix_tracer)
+tracer = ClaudeTracer(backend=arize_client)
 
 # 추적 시작
 tracer.start()
@@ -84,17 +89,16 @@ tracer.start()
 # Claude Code 작업 수행
 # ...
 
-# Phoenix 대시보드에서 결과 확인
+# app.arize.com 대시보드에서 결과 확인
 ```
 
-### 대시보드 실행
+### 대시보드 접속
 
-```bash
-# Phoenix 대시보드 시작
-python -m phoenix.server
+Arize AX 대시보드는 웹 기반으로 제공됩니다:
 
-# 브라우저에서 http://localhost:6006 접속
-```
+1. 브라우저에서 [app.arize.com](https://app.arize.com) 접속
+2. 로그인 후 프로젝트 선택
+3. **Tracing** 탭에서 Claude Code 추적 데이터 확인
 
 ## 📊 추적되는 메트릭
 
@@ -155,7 +159,8 @@ tracer = ClaudeTracer(sampling_rate=0.1)
 ## 🔗 관련 링크
 
 - [Claude Code 문서](https://docs.claude.com/claude-code)
-- [Arize Phoenix 문서](https://docs.arize.com/phoenix)
+- [Arize AX 플랫폼](https://app.arize.com)
+- [Arize AX 문서](https://docs.arize.com)
 - [Anthropic API 문서](https://docs.anthropic.com)
 
 ## 📞 문의
@@ -165,4 +170,4 @@ tracer = ClaudeTracer(sampling_rate=0.1)
 ## 🙏 감사의 말
 
 - [Anthropic](https://www.anthropic.com/) - Claude Code 제공
-- [Arize AI](https://arize.com/) - Phoenix 관찰성 플랫폼 제공
+- [Arize AI](https://arize.com/) - AX 관찰성 플랫폼 무료 제공
